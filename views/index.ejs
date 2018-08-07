@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Matchfinder</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-1">Matchfinder</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                    <% if (user) { %>
+                        <a class="btn btn-primary btn-lg" href="/qq">Szukaj Gry</a> <a class="btn btn-primary btn-lg" href="/logout">Wyloguj</a><br>
+                        
+                    <% } else { %>
+                        <a class="btn btn-primary btn-lg" href="/login">Logowanie</a>
+                        <a class="btn btn-primary btn-lg" href="/register">Rejestracja</a>
+                    <% } %>
+            </div>
+        </div>
+        <% if (user) { %>
+        <div class="row">
+            <div class="col">
+                <p class="userdata">
+                    <strong>Nazwa konta Matchfinder: </strong><%= user.username %><br>
+                    <strong>Nazwa Przywoływacza: </strong><%= user.summonersName %><br>
+                    <strong>ID Konta: </strong><%= user.accountId %><br>
+                    <strong>ID Przywoływacza: </strong><%= user.summonersId %><br>
+                </p>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    
+</body>
+<script src="/js/bootstrap.min.js"></script>
+</html>

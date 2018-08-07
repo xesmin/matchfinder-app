@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>Matchfinder - Gra</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-1">Matchfinder</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <% if (win == "Win") { %>
+                <p class="gamestatus" style="font-size: 36px; color: green; display: inline-block;">ZWYCIĘSTWO!</p>
+                <% } else { %>
+                <p class="gamestatus" style="font-size: 36px; color: red; display: inline-block;">PRZEGRANA!</p>
+                <% } %><br>
+                <a class="btn btn-primary" href="/qq">Szukaj Kolejnej Gry</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col players">
+                <% if (data.user1.id != 0) { %>
+                    <div class="player1">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= data.user1.username %><br>
+                                    <strong>Summoner's Name: </strong><%= data.user1.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player1"></div>
+                <% } %>
+                <% if (data.user2.id != 0) { %>
+                    <div class="player2">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= data.user2.username %><br>
+                                    <strong>Summoner's Name: </strong><%= data.user2.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player2"></div>
+                <% } %>
+                <% if (data.user3.id != 0) { %>
+                    <div class="player3">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= data.user3.username %><br>
+                                    <strong>Summoner's Name: </strong><%= data.user3.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player3"></div>
+                <% } %>
+                <% if (data.user4.id != 0) { %>
+                    <div class="player4">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= data.user4.username %><br>
+                                    <strong>Summoner's Name: </strong><%= data.user4.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player4"></div>
+                <% } %>
+                <% if (data.user5.id != 0) { %>
+                    <div class="player5">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= data.user5.username %><br>
+                                    <strong>Summoner's Name: </strong><%= data.user5.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player5"></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

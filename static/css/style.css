@@ -1,0 +1,84 @@
+.display-1 {
+    font-size: 6rem;
+    font-weight: 300;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.row { 
+    margin-bottom: 2rem;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.solo-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    padding: .5rem;
+    font-size: 3rem;
+    font-weight: 300;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #B492E9;
+    margin-bottom: 2rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-bottom: 1px solid #4FD3D3;
+    color: #4FD3D3;
+}
+
+.form-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #B492E9;
+  }
+.form-input::-moz-placeholder { /* Firefox 19+ */
+    color: #B492E9;
+  }
+.form-input:-ms-input-placeholder { /* IE 10+ */
+    color: #B492E9;
+  }
+.form-input:-moz-placeholder { /* Firefox 18- */
+    color: #B492E9;
+}
+
+.btn-submit {
+    width: 100%;
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.userdata {
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+.userdata strong {
+    font-size: 1.5rem;
+    min-width: 200px;
+    display: inline-block;
+}
+
+.playerdata {
+    font-size: 2.5rem;
+}
+
+.playerdata strong {
+    font-size: 1.8rem;
+    display: inline-block;
+    min-width: 175px;
+}

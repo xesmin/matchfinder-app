@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <title>MatchFinder - Gra</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-1">Matchfinder</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="gamestatus" style="font-size: 36px; color: orange;">Oczekiwanie na rozpoczęcie gry...</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col players">
+                <% if (game.user1.id != 0) { %>
+                    <div class="player1">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= game.user1.username %><br>
+                                    <strong>Summoner's Name: </strong><%= game.user1.summonersName %><br>
+                                    
+                                </p>
+                                <strong style="color: orange;">Kapitan </strong> - jest odpowiedzialny za zaproszenie graczy do drużyny i wystartowanie meczu.
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player1"></div>
+                <% } %>
+                <% if (game.user2.id != 0) { %>
+                    <div class="player2">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= game.user2.username %><br>
+                                    <strong>Summoner's Name: </strong><%= game.user2.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player2"></div>
+                <% } %>
+                <% if (game.user3.id != 0) { %>
+                    <div class="player3">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= game.user3.username %><br>
+                                    <strong>Summoner's Name: </strong><%= game.user3.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player3"></div>
+                <% } %>
+                <% if (game.user4.id != 0) { %>
+                    <div class="player4">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= game.user4.username %><br>
+                                    <strong>Summoner's Name: </strong><%= game.user4.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player4"></div>
+                <% } %>
+                <% if (game.user5.id != 0) { %>
+                    <div class="player5">
+                        <div class="row">
+                            <div class="col" style="max-width: 160px;">
+                                <img src="/img/avatar_default.png" class="img-fluid">
+                            </div>
+                            <div class="col" >
+                                <p class="playerdata">
+                                    <strong>Użytkownik: </strong><%= game.user5.username %><br>
+                                    <strong>Summoner's Name: </strong><%= game.user5.summonersName %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <div class="player5"></div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        
+        setInterval(function() 
+        {       
+            var localStatus = 0;
+                $.ajax({url: "/matchdata/<%= game.id %>", success: function(result){
+                    if (result.message) {
+                        if (result.message == "matchNotStarted" && localStatus == 0) {
+                            $(".gamestatus").html("Oczekiwanie na rozpoczęcie gry...");
+                        } 
+                        if (result.message == "gameInProgress") {
+                            $(".gamestatus").html("GRA W TRAKCIE");
+                            localStatus = 1;
+                        } 
+                        if (result.message == "gameFinished") {
+                            $(".gamestatus").html("GRA ZAKOŃCZONA");
+                            window.location.replace("/result/<%= game.id%>");
+                        }
+                            
+                    }
+                        
+
+                    else {
+                        $(".gamestatus").html("Wczytywanie danych...");
+                    }
+                        
+                }});
+            
+        }, 10000);
+    </script>
+</body>
+</html>

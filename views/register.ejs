@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Matchfinder - Rejestracja</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col">
+                <h1 class="display-1">Matchfinder</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                    <% if (user) { %>
+                        <a class="btn btn-primary btn-lg" href="/logout">Wyloguj</a><br>
+                        Nazwa konta Matchfinder: <%= user.username %><br>
+                        Nazwa Przywoływacza: <%= user.summonersName %><br>
+                        ID Konta: <%= user.accountId %><br>
+                        ID Przywoływacza: <%= user.summonersId %><br>
+                        <a class="btn btn-primary btn-lg" href="/qq">Szukaj Gry</a>
+                    <% } else { %>
+                        <a class="btn btn-primary btn-lg" href="/login">Logowanie</a>
+                        <a class="btn btn-primary btn-lg" href="/register">Rejestracja</a>
+                    <% } %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                    <form class="solo-form" method="POST" action="/register">
+                        <% if (err == 1) { %>
+                            <p style="color: red; font-size: 16px;">Wprowadzono niepoprawne dane, spróbuj jeszcze raz.</p>
+                        <% } %>
+                        <div class="input-group">
+                                <input class="form-input" type="text" name="username" placeholder="Login" required>
+                        </div>
+                        <div class="input-group">
+                                <input class="form-input" type="password" name="password" placeholder="Hasło" required>
+                        </div>
+                        <div class="input-group">
+                                <input class="form-input" type="email" name="email" placeholder="E-Mail" required>
+                        </div>
+                        <div class="input-group">
+                                <input class="form-input" type="text" name="summonersName" placeholder="Summoner's Name" required>
+                        </div>
+                        
+                        <input class="btn btn-primary btn-submit" type="submit" value="ZAREJESTRUJ">
+                    </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+<!--<form method="POST" action="/register">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="email" name="email">
+        <input type="text" name="summonersName">
+        <input type="submit">
+    </form> -->
